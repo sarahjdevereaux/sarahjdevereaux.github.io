@@ -1,0 +1,223 @@
+/* ==========================================================================
+   layout.css — page-level structure
+   ========================================================================== */
+
+.container {
+  width: var(--w-content);
+  margin-inline: auto;
+}
+
+/* --- Signature: illuminated margin rules ----------------------------------
+   Two hairlines running the full page height at the content edges, fading
+   out top and bottom. Reads as a manuscript margin / engraved certificate
+   border. Desktop only, purely decorative, hidden from assistive tech.
+   -------------------------------------------------------------------------- */
+
+.page-frame {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  display: none;
+}
+
+.page-frame__rule {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--c-purple-deep) 12%,
+    var(--c-purple-deep) 88%,
+    transparent
+  );
+}
+
+.page-frame__rule--left  { left:  max(var(--s-8), calc(50% - 38rem)); }
+.page-frame__rule--right { right: max(var(--s-8), calc(50% - 38rem)); }
+
+@media (min-width: 60rem) {
+  .page-frame { display: block; }
+}
+
+/* --- Header --------------------------------------------------------------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: color-mix(in srgb, var(--c-bg) 88%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--c-border-soft);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-4);
+  padding-block: var(--s-4);
+}
+
+.site-header__mark {
+  font-family: var(--f-display);
+  font-size: var(--t-lg);
+  letter-spacing: var(--ls-tight);
+  color: var(--c-text);
+  text-decoration: none;
+}
+
+.site-header__mark span { color: var(--c-metal); }
+
+.site-nav ul {
+  display: flex;
+  gap: var(--s-6);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.site-nav a {
+  font-family: var(--f-mono);
+  font-size: var(--t-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c-text-2);
+  text-decoration: none;
+}
+
+.site-nav a:hover { color: var(--c-purple-bright); }
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius);
+  color: var(--c-text-2);
+  font-family: var(--f-mono);
+  font-size: var(--t-xs);
+  letter-spacing: 0.08em;
+  padding: var(--s-2) var(--s-3);
+  cursor: pointer;
+}
+
+@media (max-width: 44rem) {
+  .nav-toggle { display: block; }
+  .site-nav {
+    display: none;
+    width: 100%;
+    padding-block: var(--s-4);
+  }
+  .site-nav.is-open { display: block; }
+  .site-header__inner { flex-wrap: wrap; }
+  .site-nav ul { flex-direction: column; gap: var(--s-3); }
+}
+
+/* --- Hero ----------------------------------------------------------------- */
+
+.hero {
+  position: relative;
+  padding-block: var(--s-24) var(--s-16);
+}
+
+.hero__name {
+  margin-bottom: var(--s-4);
+}
+
+.hero__role {
+  font-family: var(--f-mono);
+  font-size: var(--t-sm);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--c-metal);
+  margin-bottom: var(--s-6);
+}
+
+.hero__statement {
+  font-size: var(--t-lg);
+  line-height: 1.55;
+  color: var(--c-text-2);
+  max-width: 46ch;
+}
+
+.hero__rule {
+  width: 6rem;
+  height: 1px;
+  background: var(--c-metal-dim);
+  margin-block: var(--s-8);
+}
+
+/* --- Sections ------------------------------------------------------------- */
+
+.section {
+  position: relative;
+  padding-block: var(--s-16);
+  border-top: 1px solid var(--c-border-soft);
+}
+
+.section__header {
+  margin-bottom: var(--s-12);
+}
+
+.section__eyebrow {
+  display: block;
+  font-family: var(--f-mono);
+  font-size: var(--t-xs);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--c-metal);
+  margin-bottom: var(--s-3);
+}
+
+.section__title { margin-bottom: var(--s-4); }
+
+.section__rule {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    var(--c-purple-core),
+    var(--c-border) 30%,
+    transparent 70%
+  );
+}
+
+/* --- Footer --------------------------------------------------------------- */
+
+.site-footer {
+  border-top: 1px solid var(--c-border-soft);
+  padding-block: var(--s-8) var(--s-12);
+  font-family: var(--f-mono);
+  font-size: var(--t-xs);
+  color: var(--c-text-muted);
+  letter-spacing: 0.04em;
+}
+
+.site-footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-4);
+  justify-content: space-between;
+}
+
+/* --- Scroll reveal (progressively enhanced by main.js) -------------------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 600ms var(--ease), transform 600ms var(--ease);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* If JS never runs, content must still be visible. */
+.no-js .reveal { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; }
+}

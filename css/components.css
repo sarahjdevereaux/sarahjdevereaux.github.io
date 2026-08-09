@@ -1,0 +1,230 @@
+/* ==========================================================================
+   components.css — the repeating pieces. BEM-lite naming.
+   ========================================================================== */
+
+/* --- Entry: one job or one qualification ---------------------------------- */
+
+.entry-list {
+  display: grid;
+  gap: var(--s-12);
+}
+
+.entry {
+  position: relative;
+  padding-left: var(--s-6);
+  border-left: 1px solid var(--c-purple-deep);
+  border-radius: 0; /* single-sided borders never get rounded corners */
+}
+
+.entry::before {
+  content: "";
+  position: absolute;
+  left: -3px;
+  top: 0.6em;
+  width: 5px;
+  height: 5px;
+  background: var(--c-purple-core);
+  border-radius: 50%;
+}
+
+.entry__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2) var(--s-4);
+  font-family: var(--f-mono);
+  font-size: var(--t-xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--c-text-muted);
+  margin-bottom: var(--s-2);
+}
+
+.entry__role {
+  font-size: var(--t-xl);
+  margin-bottom: var(--s-1);
+}
+
+.entry__org {
+  font-family: var(--f-mono);
+  font-size: var(--t-sm);
+  color: var(--c-metal);
+  margin-bottom: var(--s-4);
+}
+
+.entry__points {
+  list-style: none;
+  padding: 0;
+  color: var(--c-text-2);
+}
+
+.entry__points li {
+  position: relative;
+  padding-left: var(--s-6);
+  max-width: var(--measure);
+}
+
+.entry__points li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.75em;
+  width: var(--s-3);
+  height: 1px;
+  background: var(--c-metal-dim);
+}
+
+/* --- Tech tag ------------------------------------------------------------- */
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.tag {
+  font-family: var(--f-mono);
+  font-size: var(--t-xs);
+  letter-spacing: 0.04em;
+  color: var(--c-text-2);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius);
+  padding: var(--s-1) var(--s-3);
+  white-space: nowrap;
+}
+
+.entry__points + .tag-row { margin-top: var(--s-4); }
+
+/* --- Skill group ---------------------------------------------------------- */
+
+.skill-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: var(--s-8);
+}
+
+.skill-group__label {
+  font-family: var(--f-mono);
+  font-size: var(--t-xs);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--c-metal);
+  padding-bottom: var(--s-2);
+  margin-bottom: var(--s-4);
+  border-bottom: 1px solid var(--c-border-soft);
+}
+
+/* --- Project card --------------------------------------------------------- */
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  gap: var(--s-6);
+}
+
+.project-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color var(--dur) var(--ease),
+              background-color var(--dur) var(--ease);
+}
+
+.project-card:hover,
+.project-card:focus-within {
+  border-color: var(--c-purple-core);
+  background: var(--c-surface-alt);
+}
+
+.project-card__thumb {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  object-fit: cover;
+  background: var(--c-purple-deep);
+  border-bottom: 1px solid var(--c-border);
+}
+
+.project-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  padding: var(--s-6);
+  flex: 1;
+}
+
+.project-card__title {
+  font-family: var(--f-display);
+  font-size: var(--t-xl);
+  letter-spacing: var(--ls-tight);
+  line-height: var(--lh-tight);
+}
+
+/* Whole card is the click target; the anchor stays the accessible name. */
+.project-card__title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.project-card__title a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.project-card__title a:hover { color: var(--c-purple-bright); }
+
+.project-card__summary {
+  color: var(--c-text-2);
+  font-size: var(--t-sm);
+  flex: 1;
+}
+
+.project-card .tag-row { margin-top: var(--s-2); }
+
+/* --- Project detail page -------------------------------------------------- */
+
+.project-hero { padding-block: var(--s-16) var(--s-8); }
+
+.project-hero__title { margin-block: var(--s-4); }
+
+.back-link {
+  display: inline-block;
+  font-family: var(--f-mono);
+  font-size: var(--t-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.prose {
+  display: grid;
+  gap: var(--s-6);
+  color: var(--c-text-2);
+}
+
+.prose h2 {
+  color: var(--c-text);
+  font-size: var(--t-xl);
+  margin-top: var(--s-8);
+}
+
+.link-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-6);
+  padding: 0;
+  margin-top: var(--s-4);
+  list-style: none;
+}
+
+.link-row a {
+  font-family: var(--f-mono);
+  font-size: var(--t-sm);
+  letter-spacing: 0.04em;
+}
