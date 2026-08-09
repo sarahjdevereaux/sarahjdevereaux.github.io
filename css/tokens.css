@@ -1,0 +1,67 @@
+/* ==========================================================================
+   tokens.css — design tokens only. No selectors beyond :root.
+   Change values here; never hardcode a colour or size anywhere else.
+   ========================================================================== */
+
+:root {
+  /* --- Surfaces: near-black with a violet undertone, never pure #000 ------ */
+  --c-bg:           #0B0810;
+  --c-surface:      #120E1A;
+  --c-surface-alt:  #1A1425;
+  --c-border:       #2A2137;
+  --c-border-soft:  #1E1829;
+
+  /* --- Regal purple ramp -------------------------------------------------- */
+  --c-purple-deep:   #2E1145;  /* fills, rules, quiet structure */
+  --c-purple-core:   #6D28D9;  /* fills and borders only — NOT text */
+  --c-purple-bright: #A78BFA;  /* interactive: links, hover, focus */
+
+  /* --- Metallic: the restraint accent. Ration it. ------------------------- */
+  --c-metal:      #C6B79A;
+  --c-metal-dim:  #8A7F6B;
+
+  /* --- Text --------------------------------------------------------------- */
+  --c-text:       #EDE9F2;
+  --c-text-2:     #A9A2B8;
+  --c-text-muted: #6E6780;
+
+  /* --- Typefaces ----------------------------------------------------------- */
+  --f-display: "Bodoni Moda", Georgia, "Times New Roman", serif;
+  --f-body:    "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+  --f-mono:    "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* --- Type scale: 1.25 ratio, fluid at the display end -------------------- */
+  --t-xs:   0.75rem;
+  --t-sm:   0.875rem;
+  --t-base: 1rem;
+  --t-lg:   1.25rem;
+  --t-xl:   1.563rem;
+  --t-2xl:  1.953rem;
+  --t-3xl:  clamp(2.4rem, 5vw, 3.815rem);
+
+  --lh-tight: 1.15;
+  --lh-body:  1.65;
+
+  --ls-label: 0.18em;   /* eyebrow labels */
+  --ls-tight: -0.02em;  /* large display type */
+
+  /* --- Space: 4px base ----------------------------------------------------- */
+  --s-1:  0.25rem;
+  --s-2:  0.5rem;
+  --s-3:  0.75rem;
+  --s-4:  1rem;
+  --s-6:  1.5rem;
+  --s-8:  2rem;
+  --s-12: 3rem;
+  --s-16: 4rem;
+  --s-24: 6rem;
+
+  /* --- Layout -------------------------------------------------------------- */
+  --measure:     68ch;   /* max line length for prose */
+  --w-content:   min(72rem, 100% - var(--s-8));
+  --radius:      2px;    /* near-sharp reads editorial, not SaaS */
+
+  /* --- Motion -------------------------------------------------------------- */
+  --dur:  180ms;
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
