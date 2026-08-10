@@ -65,3 +65,11 @@
   --dur:  180ms;
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+/* Once the decorative margin rules appear (60rem, see layout.css), the content
+   column needs a wider gutter so the text clears them. */
+@media (min-width: 60rem) {
+  :root {
+    --w-content: min(72rem, 100% - var(--s-24));
+  }
+}
