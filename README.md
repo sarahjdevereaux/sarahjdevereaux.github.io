@@ -34,5 +34,8 @@ than hardcoding values in the other stylesheets.
 
 - Replace the lorem ipsum and "Placeholder Organisation" entries with real
   experience, education and project detail.
+- Fill in the Contact section: real email address and LinkedIn URL, and
+  uncomment the Bluesky row if that account gets created. Everything still
+  needing replacement is findable with `grep -rn placeholder --include=*.html .`
 - Point the Repository / Live version links in `projects/project-alpha.html` at
   real URLs.

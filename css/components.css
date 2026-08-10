@@ -228,3 +228,58 @@
   font-size: var(--t-sm);
   letter-spacing: 0.04em;
 }
+
+/* --- Contact list --------------------------------------------------------- */
+
+.contact-list {
+  display: grid;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  max-width: var(--measure);
+  border-top: 1px solid var(--c-border-soft);
+}
+
+.contact-list li {
+  margin: 0;
+  border-bottom: 1px solid var(--c-border-soft);
+}
+
+.contact-link {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--s-2) var(--s-6);
+  padding-block: var(--s-4);
+  text-decoration: none;
+  color: var(--c-text);
+}
+
+/* Label column matches the mono/metal treatment used by .skill-group__label
+   and .entry__org, so the section reads as part of the same system. */
+.contact-link__label {
+  flex: 0 0 7rem;
+  font-family: var(--f-mono);
+  font-size: var(--t-xs);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--c-metal);
+}
+
+.contact-link__value {
+  font-family: var(--f-mono);
+  font-size: var(--t-sm);
+  color: var(--c-text-2);
+  overflow-wrap: anywhere; /* long addresses must not push the row wide */
+  transition: color var(--dur) var(--ease);
+}
+
+.contact-link--external .contact-link__value::after {
+  content: " \2197";       /* ↗ marks a link that leaves the site */
+  color: var(--c-metal-dim);
+}
+
+.contact-link:hover .contact-link__value,
+.contact-link:focus-visible .contact-link__value {
+  color: var(--c-purple-bright);
+}
