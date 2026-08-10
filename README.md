@@ -19,6 +19,7 @@ Then visit <http://localhost:8000>. Ctrl+C to stop.
 ```
 index.html              CV / landing page
 projects/               one page per project case study
+docs/                   work reports and the Git Lab series (Project Alpha)
 css/    tokens.css      design tokens — colours, type, spacing. Edit values HERE.
         base.css        reset, element defaults, accessibility, print styles
         layout.css      page structure: header, hero, sections, footer
