@@ -35,8 +35,12 @@
   );
 }
 
-.page-frame__rule--left  { left:  max(var(--s-8), calc(50% - 38rem)); }
-.page-frame__rule--right { right: max(var(--s-8), calc(50% - 38rem)); }
+/* The content column is 72rem wide at most, so its edge sits 36rem from centre;
+   38rem puts these rules 2rem outside the text. The floor must stay SMALLER
+   than the container's side gutter, or the rules land on top of the text on
+   narrower desktop windows. */
+.page-frame__rule--left  { left:  max(var(--s-6), calc(50% - 38rem)); }
+.page-frame__rule--right { right: max(var(--s-6), calc(50% - 38rem)); }
 
 @media (min-width: 60rem) {
   .page-frame { display: block; }
@@ -120,6 +124,27 @@
 .hero {
   position: relative;
   padding-block: var(--s-24) var(--s-16);
+  display: grid;
+  gap: var(--s-12);
+  align-items: center;
+}
+
+@media (min-width: 60rem) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 20rem);
+  }
+}
+
+.hero__portrait {
+  margin: 0;
+  justify-self: start;
+  max-width: 20rem;
+}
+
+.hero__portrait img {
+  width: 100%;
+  border: 1px solid var(--c-metal-dim);
+  border-radius: var(--radius);
 }
 
 .hero__name {
